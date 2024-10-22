@@ -1,0 +1,43 @@
+.Container {
+  width: 90%;
+  margin: auto;
+  padding-top: 100px;
+  display: flex;
+}
+
+.left-content,
+.right-content {
+  flex-basis: 50%;
+}
+
+.left-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
+  grid-gap: 2rem;
+}
+
+.right-content {
+  width: 50%;
+  text-align: center;
+  color: black;
+  position: fixed;
+  top: 100px;
+  right: 10px;
+}
+
+.btn-group {
+  display: flex;
+}
+
+.btn-group button {
+  outline: none;
+  border: none;
+  width: 150px;
+  padding: 0.3rem 0;
+  margin: 1rem;
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  background-color: #b74555;
+  border-radius: 8px;
+}
