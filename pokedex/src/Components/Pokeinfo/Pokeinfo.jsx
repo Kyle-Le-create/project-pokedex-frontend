@@ -24,7 +24,7 @@ const Pokeinfo = ({ data }) => {
               );
             })}
           </div>
-          <div className="base-stat">
+          <div className="base__stat">
             {data.stats.map((poke) => {
               return (
                 <>

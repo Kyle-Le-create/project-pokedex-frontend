@@ -5,18 +5,18 @@
   display: flex;
 }
 
-.left-content,
-.right-content {
+.left__content,
+.right__content {
   flex-basis: 50%;
 }
 
-.left-content {
+.left__content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 0.5fr));
   grid-gap: 2rem;
 }
 
-.right-content {
+.right__content {
   width: 50%;
   text-align: center;
   color: black;
@@ -25,11 +25,11 @@
   right: 10px;
 }
 
-.btn-group {
+.btn__group {
   display: flex;
 }
 
-.btn-group button {
+.btn__group button {
   outline: none;
   border: none;
   width: 150px;

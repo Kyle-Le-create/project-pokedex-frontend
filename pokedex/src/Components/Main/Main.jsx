@@ -23,6 +23,7 @@ const Main = () => {
     getPokemon(res.data.results);
     setLoading(false);
   };
+
   const getPokemon = async (res) => {
     res.map(async (item) => {
       const result = await axios.get(item.url);
@@ -33,20 +34,22 @@ const Main = () => {
       });
     });
   };
+
   useEffect(() => {
     pokeFun();
   }, [url]);
+
   return (
     <>
       <div className="container">
-        <div className="left-content">
+        <div className="left__content">
           <Card
             pokemon={pokeData}
             loading={loading}
             infoPokemon={(poke) => setPokeDex(poke)}
           />
 
-          <div className="btn-group">
+          <div className="btn__group">
             {prevUrl && (
               <button
                 onClick={() => {
@@ -70,7 +73,7 @@ const Main = () => {
             )}
           </div>
         </div>
-        <div className="right-content">
+        <div className="right__content">
           <Pokeinfo data={pokeDex} />
         </div>
       </div>
