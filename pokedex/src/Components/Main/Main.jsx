@@ -4,7 +4,7 @@ import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import "./Main.css";
+import "../Main/Main.css";
 import Footer from "../Footer/Footer";
 
 const Main = () => {

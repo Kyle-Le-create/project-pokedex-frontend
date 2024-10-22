@@ -1,5 +1,5 @@
 import React from "react";
-import "./Pokeinfo.css";
+import "../Pokeinfo/Pokeinfo.css";
 
 const Pokeinfo = ({ data }) => {
   return (
