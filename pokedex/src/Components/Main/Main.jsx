@@ -76,6 +76,7 @@ const Main = () => {
         <div className="right__content">
           <Pokeinfo data={pokeDex} />
         </div>
+        <Footer />
       </div>
     </>
   );
