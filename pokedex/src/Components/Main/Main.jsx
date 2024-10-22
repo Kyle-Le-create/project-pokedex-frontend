@@ -8,12 +8,15 @@ import "../Main/Main.css";
 import Footer from "../Footer/Footer";
 
 const Main = () => {
-  const [pokeData, setPokeData] = useState([]);
+  //const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
   const [pokeDex, setPokeDex] = useState();
+  const [pokeInfo, setPokeInfo] = useState({});
+
+  const pokeData = Object.values(pokeInfo);
 
   const pokeFun = async () => {
     setLoading(true);
@@ -24,12 +27,15 @@ const Main = () => {
     setLoading(false);
   };
 
+  console.log(pokeData);
+
   const getPokemon = async (res) => {
     res.map(async (item) => {
       const result = await axios.get(item.url);
-      setPokeData((state) => {
-        state = [...state, result.data];
-        state.sort((a, b) => (a.id > b.id ? 1 : -1));
+
+      setPokeInfo((state) => {
+        state = { ...state, [result.data.id]: result.data };
+        // state.sort((a, b) => (a.id > b.id ? 1 : -1));
         return state;
       });
     });
@@ -44,7 +50,7 @@ const Main = () => {
       <div className="container">
         <div className="left__content">
           <Card
-            pokemon={pokeData}
+            pokeData={pokeData}
             loading={loading}
             infoPokemon={(poke) => setPokeDex(poke)}
           />
@@ -53,7 +59,7 @@ const Main = () => {
             {prevUrl && (
               <button
                 onClick={() => {
-                  setPokeData([]);
+                  setPokeInfo({});
                   setUrl(prevUrl);
                 }}
               >
@@ -64,7 +70,7 @@ const Main = () => {
             {nextUrl && (
               <button
                 onClick={() => {
-                  setPokeData([]);
+                  setPokeInfo({});
                   setUrl(nextUrl);
                 }}
               >
