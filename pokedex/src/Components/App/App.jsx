@@ -29,8 +29,6 @@ const App = () => {
     setLoading(false);
   };
 
-  console.log(pokeData);
-
   const getPokemon = async (res) => {
     res.map(async (item) => {
       const result = await axios.get(item.url);
