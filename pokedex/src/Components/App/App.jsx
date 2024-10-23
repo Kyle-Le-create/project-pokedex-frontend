@@ -5,7 +5,9 @@ import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import "../App/App.css";
+import "../style.css";
 import Footer from "../Footer/Footer";
+import { Routes, Route } from "react-router-dom";
 
 const App = () => {
   //const [pokeData, setPokeData] = useState([]);
@@ -46,47 +48,79 @@ const App = () => {
   }, [url]);
 
   return (
-    <>
-      <div className="container">
-        <div className="content">
-          <div className="left__content">
-            <Card
+    <div className="container">
+      {/* <Header /> */}
+      <Routes>
+        <Route exact path="/" element={<h1>This is the main page</h1>} />
+        <Route
+          exact
+          path="/pokemon"
+          element={
+            <PokemonCards
               pokeData={pokeData}
               loading={loading}
-              infoPokemon={(poke) => setPokeDex(poke)}
+              setPokeDex={setPokeDex}
+              setPokeInfo={setPokeInfo}
+              setUrl={setUrl}
+              pokeDex={pokeDex}
+              prevUrl={prevUrl}
+              nextUrl={nextUrl}
             />
-
-            <div className="btn__group">
-              {prevUrl && (
-                <button
-                  onClick={() => {
-                    setPokeInfo({});
-                    setUrl(prevUrl);
-                  }}
-                >
-                  Previous
-                </button>
-              )}
-
-              {nextUrl && (
-                <button
-                  onClick={() => {
-                    setPokeInfo({});
-                    setUrl(nextUrl);
-                  }}
-                >
-                  Next
-                </button>
-              )}
-            </div>
-          </div>
-          <div className="right__content">
-            <Pokeinfo data={pokeDex} />
-          </div>
-        </div>
-        <Footer />
-      </div>
-    </>
+          }
+        />
+      </Routes>
+      <Footer />
+    </div>
   );
 };
+
+function PokemonCards({
+  pokeData,
+  loading,
+  setPokeDex,
+  setPokeInfo,
+  setUrl,
+  pokeDex,
+  prevUrl,
+  nextUrl,
+}) {
+  return (
+    <div className="content">
+      <div className="left__content">
+        <Card
+          pokeData={pokeData}
+          loading={loading}
+          infoPokemon={(poke) => setPokeDex(poke)}
+        />
+
+        <div className="btn__group">
+          {prevUrl && (
+            <button
+              onClick={() => {
+                setPokeInfo({});
+                setUrl(prevUrl);
+              }}
+            >
+              Previous
+            </button>
+          )}
+
+          {nextUrl && (
+            <button
+              onClick={() => {
+                setPokeInfo({});
+                setUrl(nextUrl);
+              }}
+            >
+              Next
+            </button>
+          )}
+        </div>
+      </div>
+      <div className="right__content">
+        <Pokeinfo data={pokeDex} />
+      </div>
+    </div>
+  );
+}
 export default App;

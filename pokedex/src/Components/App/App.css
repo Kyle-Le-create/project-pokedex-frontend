@@ -1,8 +1,7 @@
 .container {
-  width: 90%;
+  max-width: 1440px;
   margin: auto;
   padding-top: 100px;
-  display: flex;
 }
 
 .content {
@@ -18,7 +17,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
   gap: 2rem;
-  width: 990px;
+  width: 1000px;
 }
 
 .right__content {

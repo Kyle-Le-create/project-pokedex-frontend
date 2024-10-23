@@ -1,5 +1,6 @@
 import React from "react";
 import "../Pokeinfo/Pokeinfo.css";
+import { v4 as uuidv4 } from "uuid";
 
 const Pokeinfo = ({ data }) => {
   return (
@@ -15,23 +16,21 @@ const Pokeinfo = ({ data }) => {
           />
           <div className="abilities">
             {data.abilities.map((poke) => {
+              const id = uuidv4();
               return (
-                <>
-                  <div className="group">
-                    <h2>{poke.ability.name}</h2>
-                  </div>
-                </>
+                <div key={id} className="group">
+                  <h2>{poke.ability.name}</h2>
+                </div>
               );
             })}
           </div>
           <div className="base__stat">
             {data.stats.map((poke) => {
+              const id = uuidv4();
               return (
-                <>
-                  <h3>
-                    {poke.stat.name}:{poke.base_stat}
-                  </h3>
-                </>
+                <h3 key={id}>
+                  {poke.stat.name}:{poke.base_stat}
+                </h3>
               );
             })}
           </div>
