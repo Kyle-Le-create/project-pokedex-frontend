@@ -4,10 +4,10 @@ import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import "../Main/Main.css";
+import "../App/App.css";
 import Footer from "../Footer/Footer";
 
-const Main = () => {
+const App = () => {
   //const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
@@ -48,43 +48,45 @@ const Main = () => {
   return (
     <>
       <div className="container">
-        <div className="left__content">
-          <Card
-            pokeData={pokeData}
-            loading={loading}
-            infoPokemon={(poke) => setPokeDex(poke)}
-          />
+        <div className="content">
+          <div className="left__content">
+            <Card
+              pokeData={pokeData}
+              loading={loading}
+              infoPokemon={(poke) => setPokeDex(poke)}
+            />
 
-          <div className="btn__group">
-            {prevUrl && (
-              <button
-                onClick={() => {
-                  setPokeInfo({});
-                  setUrl(prevUrl);
-                }}
-              >
-                Previous
-              </button>
-            )}
+            <div className="btn__group">
+              {prevUrl && (
+                <button
+                  onClick={() => {
+                    setPokeInfo({});
+                    setUrl(prevUrl);
+                  }}
+                >
+                  Previous
+                </button>
+              )}
 
-            {nextUrl && (
-              <button
-                onClick={() => {
-                  setPokeInfo({});
-                  setUrl(nextUrl);
-                }}
-              >
-                Next
-              </button>
-            )}
+              {nextUrl && (
+                <button
+                  onClick={() => {
+                    setPokeInfo({});
+                    setUrl(nextUrl);
+                  }}
+                >
+                  Next
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="right__content">
-          <Pokeinfo data={pokeDex} />
+          <div className="right__content">
+            <Pokeinfo data={pokeDex} />
+          </div>
         </div>
         <Footer />
       </div>
     </>
   );
 };
-export default Main;
+export default App;
