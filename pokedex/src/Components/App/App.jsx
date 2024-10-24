@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "../Header/Header";
 import Card from "../Card/Card";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import axios from "axios";
@@ -8,6 +9,8 @@ import "../App/App.css";
 import "../style.css";
 import Footer from "../Footer/Footer";
 import { Routes, Route } from "react-router-dom";
+import pokemonData from "../pokemonapi.json";
+import { useNavigate } from "react-router-dom";
 
 const App = () => {
   //const [pokeData, setPokeData] = useState([]);
@@ -18,7 +21,21 @@ const App = () => {
   const [pokeDex, setPokeDex] = useState();
   const [pokeInfo, setPokeInfo] = useState({});
 
-  const pokeData = Object.values(pokeInfo);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [pokemonList, setPokemonList] = useState(pokemonData.results);
+  const filteredPokemonList = pokemonList.filter((pokemon) =>
+    pokemon.name.includes(searchTerm)
+  );
+
+  const pokeData = Object.values(pokeInfo).filter((pokemon) => {
+    const bool = pokemon.name.includes(searchTerm);
+    return bool;
+  });
+
+  console.log(pokeData);
+
+  const navigate = useNavigate();
 
   const pokeFun = async () => {
     setLoading(true);
@@ -47,11 +64,43 @@ const App = () => {
 
   return (
     <div className="container">
-      {/* <Header /> */}
+      <Header
+        pokemonList={pokemonList}
+        filteredPokemonList={filteredPokemonList}
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+      />
+      {/* <Header
+        pokemonList={pokemonList}
+        searchTerm={searchTerm}
+        selectedPokemon={selectedPokemon}
+        filteredPokemonList={filteredPokemonList}
+      /> */}
       <Routes>
-        <Route exact path="/" element={<h1>This is the main page</h1>} />
+        {
+          <Route
+            exact
+            path="/"
+            element={
+              <ul>
+                {filteredPokemonList.map((pokemon) => (
+                  <li key={pokemon.id} className="pokemon-item">
+                    <a
+                      onClick={() => {
+                        //showPokemon(pokemon.url);
+                        navigate("/pokemon");
+                      }}
+                    >
+                      {pokemon.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            }
+          />
+        }
+
         <Route
-          exact
           path="/pokemon"
           element={
             <PokemonCards

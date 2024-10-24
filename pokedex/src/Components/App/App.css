@@ -8,11 +8,6 @@
   display: flex;
 }
 
-/* .left__content,
-.right__content {
-  flex-basis: 50%;
-} */
-
 .left__content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
