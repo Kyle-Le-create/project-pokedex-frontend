@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../Header/Header";
-import Card from "../Card/Card";
+import Pokecard from "../Pokecard/Pokecard";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import axios from "axios";
 import { useState } from "react";
@@ -18,9 +18,8 @@ const App = () => {
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [pokeDex, setPokeDex] = useState();
+  const [activePokemon, setPokeDex] = useState();
   const [pokeInfo, setPokeInfo] = useState({});
-
   const [searchTerm, setSearchTerm] = useState("");
 
   const [pokemonList, setPokemonList] = useState(pokemonData.results);
@@ -28,12 +27,12 @@ const App = () => {
     pokemon.name.includes(searchTerm)
   );
 
+  console.log(filteredPokemonList);
+
   const pokeData = Object.values(pokeInfo).filter((pokemon) => {
     const bool = pokemon.name.includes(searchTerm);
     return bool;
   });
-
-  console.log(pokeData);
 
   const navigate = useNavigate();
 
@@ -42,21 +41,31 @@ const App = () => {
     const res = await axios.get(url);
     setNextUrl(res.data.next);
     setPrevUrl(res.data.previous);
-    getPokemon(res.data.results);
+    fetchPokemonDetails(res.data.results);
     setLoading(false);
   };
 
-  const getPokemon = async (res) => {
+  const fetchPokemonDetails = async (res) => {
     res.map(async (item) => {
       const result = await axios.get(item.url);
 
       setPokeInfo((state) => {
         state = { ...state, [result.data.id]: result.data };
-        // state.sort((a, b) => (a.id > b.id ? 1 : -1));
         return state;
       });
     });
   };
+
+  // const filteredPokemonList = async (filteredPokemonList) => {
+  //   filteredPokemonList.map(async (item) => {
+  //     const result = await axios.get(item.url);
+
+  //     setPokeInfo((state) => {
+  //       state = { ...state, [result.data.id]: result.data };
+  //       return state;
+  //     });
+  //   });
+  // };
 
   useEffect(() => {
     pokeFun();
@@ -70,12 +79,6 @@ const App = () => {
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
       />
-      {/* <Header
-        pokemonList={pokemonList}
-        searchTerm={searchTerm}
-        selectedPokemon={selectedPokemon}
-        filteredPokemonList={filteredPokemonList}
-      /> */}
       <Routes>
         {
           <Route
@@ -109,7 +112,7 @@ const App = () => {
               setPokeDex={setPokeDex}
               setPokeInfo={setPokeInfo}
               setUrl={setUrl}
-              pokeDex={pokeDex}
+              activePokemon={activePokemon}
               prevUrl={prevUrl}
               nextUrl={nextUrl}
             />
@@ -127,14 +130,14 @@ function PokemonCards({
   setPokeDex,
   setPokeInfo,
   setUrl,
-  pokeDex,
+  activePokemon,
   prevUrl,
   nextUrl,
 }) {
   return (
     <div className="content">
       <div className="left__content">
-        <Card
+        <Pokecard
           pokeData={pokeData}
           loading={loading}
           infoPokemon={(poke) => setPokeDex(poke)}
@@ -165,7 +168,7 @@ function PokemonCards({
         </div>
       </div>
       <div className="right__content">
-        <Pokeinfo data={pokeDex} />
+        <Pokeinfo data={activePokemon} />
       </div>
     </div>
   );

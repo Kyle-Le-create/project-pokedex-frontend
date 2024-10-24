@@ -1,7 +1,7 @@
 import React from "react";
-import "../Card/Card.css";
+import "./Pokecard.css";
 
-const Card = ({ pokeData, loading, infoPokemon }) => {
+const Pokecard = ({ pokeData, loading, infoPokemon }) => {
   return (
     <>
       {loading ? (
@@ -22,4 +22,4 @@ const Card = ({ pokeData, loading, infoPokemon }) => {
     </>
   );
 };
-export default Card;
+export default Pokecard;

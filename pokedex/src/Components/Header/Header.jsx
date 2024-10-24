@@ -1,6 +1,5 @@
 import logo from "../../assets/pokemonlogo.svg";
 import "./Header.css";
-import pokemonData from "../pokemonapi.json";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
