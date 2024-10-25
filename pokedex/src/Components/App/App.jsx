@@ -15,8 +15,6 @@ import { useNavigate } from "react-router-dom";
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
-  const [nextUrl, setNextUrl] = useState();
-  const [prevUrl, setPrevUrl] = useState();
   const [activePokemon, setActivePokemon] = useState();
   const [pokeInfo, setPokeInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
@@ -25,8 +23,6 @@ const App = () => {
   const filteredPokemonList = pokemonList.filter((pokemon) =>
     pokemon.name.includes(searchTerm)
   );
-
-  console.log(filteredPokemonList);
 
   const pokeData = Object.values(pokeInfo).filter((pokemon) => {
     const bool = pokemon.name.includes(searchTerm);
@@ -38,8 +34,6 @@ const App = () => {
   const pokeFun = async () => {
     setLoading(true);
     const res = await axios.get(url);
-    setNextUrl(res.data.next);
-    setPrevUrl(res.data.previous);
     fetchPokemonDetails(res.data.results);
     setLoading(false);
   };
@@ -106,8 +100,6 @@ const App = () => {
               setPokeInfo={setPokeInfo}
               setUrl={setUrl}
               activePokemon={activePokemon}
-              prevUrl={prevUrl}
-              nextUrl={nextUrl}
             />
           }
         />
@@ -117,16 +109,7 @@ const App = () => {
   );
 };
 
-function PokemonCards({
-  pokeData,
-  loading,
-  setActivePokemon,
-  // setPokeInfo,
-  // setUrl,
-  activePokemon,
-  // prevUrl,
-  // nextUrl,
-}) {
+function PokemonCards({ pokeData, loading, setActivePokemon, activePokemon }) {
   return (
     <div className="content">
       <div className="left__content">
@@ -136,30 +119,6 @@ function PokemonCards({
           infoPokemon={(poke) => setActivePokemon(poke)}
           activePokemon={activePokemon}
         />
-
-        {/* <div className="btn__group">
-          {prevUrl && (
-            <button
-              onClick={() => {
-                setPokeInfo({});
-                setUrl(prevUrl);
-              }}
-            >
-              Previous
-            </button>
-          )}
-
-          {nextUrl && (
-            <button
-              onClick={() => {
-                setPokeInfo({});
-                setUrl(nextUrl);
-              }}
-            >
-              Next
-            </button>
-          )}
-        </div> */}
       </div>
       <div className="right__content">
         <Pokeinfo data={activePokemon} />
