@@ -10,14 +10,8 @@ function Header({
   searchTerm,
   setSearchTerm,
 }) {
-  //const [pokemonList, setPokemonList] = useState(pokemonData.results);
-  //   const [searchTerm, setSearchTerm] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const navigate = useNavigate();
-
-  //   const filteredPokemonList = pokemonList.filter((pokemon) =>
-  //     pokemon.name.includes(searchTerm)
-  //   );
 
   const showPokemon = async (url) => {
     const response = await fetch(url);

@@ -1,6 +1,6 @@
 import React, { act } from "react";
 import Header from "../Header/Header";
-import Pokecard from "../Pokecard/Pokecard";
+import Pokesprites from "../Pokesprites/Pokesprites";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import axios from "axios";
 import { useState } from "react";
@@ -13,7 +13,6 @@ import pokemonData from "../pokemonapi.json";
 import { useNavigate } from "react-router-dom";
 
 const App = () => {
-  //const [pokeData, setPokeData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextUrl, setNextUrl] = useState();
@@ -131,7 +130,7 @@ function PokemonCards({
   return (
     <div className="content">
       <div className="left__content">
-        <Pokecard
+        <Pokesprites
           pokeData={pokeData}
           loading={loading}
           infoPokemon={(poke) => setActivePokemon(poke)}
