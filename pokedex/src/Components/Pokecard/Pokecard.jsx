@@ -1,23 +1,19 @@
 import React from "react";
 import "./Pokecard.css";
 
-const Pokecard = ({ pokeData, loading, infoPokemon }) => {
+const Pokecard = ({ loading, infoPokemon, activePokemon }) => {
   return (
     <>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        pokeData.map((item) => {
-          return (
-            <div key={item.id}>
-              <div className="card" onClick={() => infoPokemon(item)}>
-                <h2>{item.id}</h2>
-                <img src={item.sprites.front_default} alt="" />
-                <h2>{item.name}</h2>
-              </div>
-            </div>
-          );
-        })
+        <div key={activePokemon.id}>
+          <div className="card" onClick={() => infoPokemon(activePokemon)}>
+            <h2>{activePokemon.id}</h2>
+            <img src={activePokemon.sprites.front_default} alt="" />
+            <h2>{activePokemon.name}</h2>
+          </div>
+        </div>
       )}
     </>
   );

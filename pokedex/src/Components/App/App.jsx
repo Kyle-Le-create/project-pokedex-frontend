@@ -1,4 +1,4 @@
-import React from "react";
+import React, { act } from "react";
 import Header from "../Header/Header";
 import Pokecard from "../Pokecard/Pokecard";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
@@ -18,7 +18,7 @@ const App = () => {
   const [url, setUrl] = useState("https://pokeapi.co/api/v2/pokemon/");
   const [nextUrl, setNextUrl] = useState();
   const [prevUrl, setPrevUrl] = useState();
-  const [activePokemon, setPokeDex] = useState();
+  const [activePokemon, setActivePokemon] = useState();
   const [pokeInfo, setPokeInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -45,6 +45,11 @@ const App = () => {
     setLoading(false);
   };
 
+  async function getPokemonDetails(url) {
+    const pokemon = await axios.get(url);
+    setActivePokemon(pokemon.data);
+  }
+
   const fetchPokemonDetails = async (res) => {
     res.map(async (item) => {
       const result = await axios.get(item.url);
@@ -55,17 +60,6 @@ const App = () => {
       });
     });
   };
-
-  // const filteredPokemonList = async (filteredPokemonList) => {
-  //   filteredPokemonList.map(async (item) => {
-  //     const result = await axios.get(item.url);
-
-  //     setPokeInfo((state) => {
-  //       state = { ...state, [result.data.id]: result.data };
-  //       return state;
-  //     });
-  //   });
-  // };
 
   useEffect(() => {
     pokeFun();
@@ -90,7 +84,7 @@ const App = () => {
                   <li key={pokemon.id} className="pokemon-item">
                     <a
                       onClick={() => {
-                        //showPokemon(pokemon.url);
+                        getPokemonDetails(pokemon.url);
                         navigate("/pokemon");
                       }}
                     >
@@ -109,7 +103,7 @@ const App = () => {
             <PokemonCards
               pokeData={pokeData}
               loading={loading}
-              setPokeDex={setPokeDex}
+              setActivePokemon={setActivePokemon}
               setPokeInfo={setPokeInfo}
               setUrl={setUrl}
               activePokemon={activePokemon}
@@ -127,12 +121,12 @@ const App = () => {
 function PokemonCards({
   pokeData,
   loading,
-  setPokeDex,
-  setPokeInfo,
-  setUrl,
+  setActivePokemon,
+  // setPokeInfo,
+  // setUrl,
   activePokemon,
-  prevUrl,
-  nextUrl,
+  // prevUrl,
+  // nextUrl,
 }) {
   return (
     <div className="content">
@@ -140,10 +134,11 @@ function PokemonCards({
         <Pokecard
           pokeData={pokeData}
           loading={loading}
-          infoPokemon={(poke) => setPokeDex(poke)}
+          infoPokemon={(poke) => setActivePokemon(poke)}
+          activePokemon={activePokemon}
         />
 
-        <div className="btn__group">
+        {/* <div className="btn__group">
           {prevUrl && (
             <button
               onClick={() => {
@@ -165,7 +160,7 @@ function PokemonCards({
               Next
             </button>
           )}
-        </div>
+        </div> */}
       </div>
       <div className="right__content">
         <Pokeinfo data={activePokemon} />

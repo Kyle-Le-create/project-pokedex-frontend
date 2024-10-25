@@ -1,4 +1,5 @@
 import logo from "../../assets/pokemonlogo.svg";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +33,9 @@ function Header({
   return (
     <div className="header">
       <header>
-        <img alt="header__logo" className="logo" src={logo} />
+        <Link to="/">
+          <img alt="header__logo" className="logo" src={logo} />
+        </Link>
       </header>
 
       <main>

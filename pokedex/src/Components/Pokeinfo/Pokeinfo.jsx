@@ -3,6 +3,7 @@ import "../Pokeinfo/Pokeinfo.css";
 import { v4 as uuidv4 } from "uuid";
 
 const Pokeinfo = ({ data }) => {
+  console.log(data);
   return (
     <>
       {!data ? (
