@@ -2,6 +2,7 @@ import React, { act } from "react";
 import Header from "../Header/Header";
 import Pokesprites from "../Pokesprites/Pokesprites";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
+import Aboutme from "../Aboutme/Aboutme";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";

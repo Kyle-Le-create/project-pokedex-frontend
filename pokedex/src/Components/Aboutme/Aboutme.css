@@ -1,0 +1,53 @@
+.about-me {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: "Roboto, sans-serif";
+}
+
+h1,
+h2 {
+  /* color: #ffcb05; */
+  color: black;
+}
+
+.introduction p {
+  font-size: 1.1em;
+}
+
+.favorite-pokemon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pokemon-list {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+}
+
+.pokemon-card {
+  text-align: center;
+}
+
+.pokemon-card img {
+  width: 100px;
+  height: auto;
+}
+
+.skills ul,
+.fun-facts ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact a {
+  color: #0073e6;
+  text-decoration: none;
+}

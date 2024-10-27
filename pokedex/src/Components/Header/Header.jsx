@@ -30,6 +30,7 @@ function Header({
         <Link to="/">
           <img alt="header__logo" className="logo" src={logo} />
         </Link>
+        <nav></nav>
       </header>
 
       <main>
