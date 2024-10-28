@@ -10,7 +10,7 @@
 }
 
 .main {
-  color: #ffcb05;
+  color: darkblue;
 }
 
 .introduction p {
@@ -25,7 +25,7 @@
 }
 
 .about-favorite {
-  color: #ffcb05;
+  color: darkblue;
 }
 
 .pokemon-list {
@@ -44,17 +44,17 @@
 }
 
 .about-technologies {
-  color: #ffcb05;
+  color: darkblue;
   margin-bottom: 10px;
 }
 
 .about-facts {
-  color: #ffcb05;
+  color: darkblue;
   margin-bottom: 10px;
 }
 
 .about-contact {
-  color: #ffcb05;
+  color: darkblue;
   margin-bottom: 10px;
 }
 
