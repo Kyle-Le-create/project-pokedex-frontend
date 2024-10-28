@@ -5,10 +5,8 @@
   font-family: "Roboto, sans-serif";
 }
 
-h1,
-h2 {
-  /* color: #ffcb05; */
-  color: black;
+.main {
+  color: #ffcb05;
 }
 
 .introduction p {
@@ -19,6 +17,10 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.about-favorite {
+  color: #ffcb05;
 }
 
 .pokemon-list {
@@ -34,6 +36,18 @@ h2 {
 .pokemon-card img {
   width: 100px;
   height: auto;
+}
+
+.about-technologies {
+  color: #ffcb05;
+}
+
+.about-facts {
+  color: #ffcb05;
+}
+
+.about-contact {
+  color: #ffcb05;
 }
 
 .skills ul,

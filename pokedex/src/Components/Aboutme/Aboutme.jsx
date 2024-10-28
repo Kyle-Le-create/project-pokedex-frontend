@@ -4,7 +4,7 @@ import "../Aboutme/Aboutme.css";
 const Aboutme = () => {
   return (
     <div className="about-me">
-      <h1>About Me</h1>
+      <h1 className="main">About Me</h1>
 
       {/* Introduction Section */}
       <section className="introduction">
@@ -18,7 +18,7 @@ const Aboutme = () => {
 
       {/* Favorite Pokémon Section */}
       <section className="favorite-pokemon">
-        <h2>My Favorite Pokémon</h2>
+        <h2 className="about-favorite">My Favorite Pokémon</h2>
         <div className="pokemon-list">
           <div className="pokemon-card">
             <img
@@ -46,7 +46,7 @@ const Aboutme = () => {
 
       {/* Skills Section */}
       <section className="skills">
-        <h2>Technologies Used</h2>
+        <h2 className="about-technologies">Technologies Used</h2>
         <ul>
           <li>React</li>
           <li>JavaScript (ES6+)</li>
@@ -57,9 +57,9 @@ const Aboutme = () => {
 
       {/* Fun Facts Section */}
       <section className="fun-facts">
-        <h2>Fun Facts</h2>
+        <h2 className="about-facts">Fun Facts</h2>
         <ul>
-          <li>The first Pokémon I caught was a Bulbasaur!</li>
+          <li>The first Pokémon I played with was a Bulbasaur!</li>
           <li>
             Did you know? Pikachu's name is derived from Japanese words for
             "sparkle" and "mouse."
@@ -69,7 +69,7 @@ const Aboutme = () => {
 
       {/* Contact Section */}
       <section className="contact">
-        <h2>Contact Me</h2>
+        <h2 className="about-contact">Contact Me</h2>
         <p>Find me on:</p>
         <ul>
           <li>
