@@ -5,12 +5,17 @@
   font-family: "Roboto, sans-serif";
 }
 
+.pokeball {
+  width: 150px;
+}
+
 .main {
   color: #ffcb05;
 }
 
 .introduction p {
   font-size: 1.1em;
+  margin-bottom: 10px;
 }
 
 .favorite-pokemon {
@@ -40,14 +45,17 @@
 
 .about-technologies {
   color: #ffcb05;
+  margin-bottom: 10px;
 }
 
 .about-facts {
   color: #ffcb05;
+  margin-bottom: 10px;
 }
 
 .about-contact {
   color: #ffcb05;
+  margin-bottom: 10px;
 }
 
 .skills ul,

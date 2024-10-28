@@ -9,6 +9,10 @@ header {
   width: 500px;
 }
 
+/* .pokeball {
+  width: 200px;
+} */
+
 .search-container {
   display: flex;
   justify-content: center;

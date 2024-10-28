@@ -1,9 +1,15 @@
 import React from "react";
 import "../Aboutme/Aboutme.css";
+import pokeball from "../../assets/pokeball.png";
+import { Link } from "react-router-dom";
 
 const Aboutme = () => {
   return (
     <div className="about-me">
+      <Link to="/">
+        <img alt="header__ball" className="pokeball" src={pokeball} />
+      </Link>
+      <nav></nav>
       <h1 className="main">About Me</h1>
 
       {/* Introduction Section */}

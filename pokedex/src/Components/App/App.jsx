@@ -61,32 +61,34 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header
-        pokemonList={pokemonList}
-        filteredPokemonList={filteredPokemonList}
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
       <Routes>
         {
           <Route
             exact
             path="/"
             element={
-              <ul>
-                {filteredPokemonList.map((pokemon) => (
-                  <li key={pokemon.id} className="pokemon-item">
-                    <a
-                      onClick={() => {
-                        getPokemonDetails(pokemon.url);
-                        navigate("/pokemon");
-                      }}
-                    >
-                      {pokemon.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <>
+                <Header
+                  pokemonList={pokemonList}
+                  filteredPokemonList={filteredPokemonList}
+                  searchTerm={searchTerm}
+                  setSearchTerm={setSearchTerm}
+                />
+                <ul>
+                  {filteredPokemonList.map((pokemon) => (
+                    <li key={pokemon.id} className="pokemon-item">
+                      <a
+                        onClick={() => {
+                          getPokemonDetails(pokemon.url);
+                          navigate("/pokemon");
+                        }}
+                      >
+                        {pokemon.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </>
             }
           />
         }
@@ -94,16 +96,25 @@ const App = () => {
         <Route
           path="/pokemon"
           element={
-            <PokemonCards
-              pokeData={pokeData}
-              loading={loading}
-              setActivePokemon={setActivePokemon}
-              setPokeInfo={setPokeInfo}
-              setUrl={setUrl}
-              activePokemon={activePokemon}
-            />
+            <>
+              <Header
+                pokemonList={pokemonList}
+                filteredPokemonList={filteredPokemonList}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+              />
+              <PokemonCards
+                pokeData={pokeData}
+                loading={loading}
+                setActivePokemon={setActivePokemon}
+                setPokeInfo={setPokeInfo}
+                setUrl={setUrl}
+                activePokemon={activePokemon}
+              />
+            </>
           }
         />
+        <Route path="/aboutme" element={<Aboutme />} />
       </Routes>
       <Footer />
     </div>

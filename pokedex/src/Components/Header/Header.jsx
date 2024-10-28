@@ -1,4 +1,5 @@
 import logo from "../../assets/pokemonlogo.svg";
+import pokeball from "../../assets/pokeball.png";
 import { Link } from "react-router-dom";
 import "./Header.css";
 import React, { useState } from "react";
@@ -29,6 +30,10 @@ function Header({
       <header>
         <Link to="/">
           <img alt="header__logo" className="logo" src={logo} />
+        </Link>
+        <nav></nav>
+        <Link to="/aboutme">
+          <img alt="header__ball" className="pokeball" src={pokeball} />
         </Link>
         <nav></nav>
       </header>
