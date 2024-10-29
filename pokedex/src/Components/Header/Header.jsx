@@ -3,6 +3,7 @@ import pokeball from "../../assets/pokeball.png";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import React, { useState } from "react";
+import { getPokemonFetch } from "../../utils/api";
 
 function Header({
   pokemonList,
@@ -13,16 +14,10 @@ function Header({
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const navigate = useNavigate();
 
-  const showPokemon = async (url) => {
-    const response = await fetch(url);
-    if (!response.ok) {
-      console.error(`Error fetching Pokemon: ${response.statusText}`);
-      return;
-    }
-
-    const data = await response.json();
-    setSelectedPokemon(data);
-  };
+  // const showPokemon = async (url) => {
+  //   const pokemonData = await getPokemonFetch();
+  //   setSelectedPokemon(pokemonData);
+  // };
 
   return (
     <div className="header">
@@ -32,7 +27,7 @@ function Header({
         </Link>
         <nav></nav>
         <Link to="/aboutme">
-          <img alt="pokeball" className="header__ball" src={pokeball} />
+          <img alt="about me logo" className="header__ball" src={pokeball} />
         </Link>
         <nav></nav>
       </header>

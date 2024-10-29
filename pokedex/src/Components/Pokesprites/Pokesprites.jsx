@@ -4,13 +4,16 @@ import "./Pokesprites.css";
 const Pokesprites = ({ pokeData, loading, infoPokemon, activePokemon }) => {
   return (
     <>
-      {loading ? (
+      {loading || !activePokemon ? (
         <h1>Loading...</h1>
       ) : (
         <div key={activePokemon?.id}>
           <div className="card" onClick={() => infoPokemon(activePokemon)}>
             <h2>{activePokemon?.id}</h2>
-            <img src={activePokemon?.sprites.front_default} alt="" />
+            <img
+              src={activePokemon?.sprites.front_default}
+              alt={activePokemon?.name}
+            />
             <h2>{activePokemon?.name}</h2>
           </div>
         </div>

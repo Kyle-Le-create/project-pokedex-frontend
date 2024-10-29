@@ -3,7 +3,6 @@ import Header from "../Header/Header";
 import Pokesprites from "../Pokesprites/Pokesprites";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import Aboutme from "../Aboutme/Aboutme";
-import axios from "axios";
 import { useState, useEffect } from "react";
 import "../App/App.css";
 import "../style.css";
@@ -11,7 +10,6 @@ import Footer from "../Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import pokemonData from "../pokemonapi.json";
 import { useNavigate } from "react-router-dom";
-// import { getPokemonById } from "../../utils/api";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -19,6 +17,8 @@ const App = () => {
   const [activePokemon, setActivePokemon] = useState();
   const [pokeInfo, setPokeInfo] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+
+  console.log(searchTerm);
 
   const [pokemonList, setPokemonList] = useState(pokemonData.results);
   const filteredPokemonList = pokemonList.filter((pokemon) =>
@@ -34,22 +34,33 @@ const App = () => {
 
   const pokeFun = async () => {
     setLoading(true);
-    const res = await axios.get(url);
-    fetchPokemonDetails(res.data.results);
+    const res = await fetch(url);
+    const data = await res.json();
+    fetchPokemonDetails(data.results);
     setLoading(false);
   };
 
   async function getPokemonDetails(url) {
-    const pokemon = await axios.get(url);
-    setActivePokemon(pokemon.data);
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error("Could not get pokemon");
+      }
+      const pokemon = await res.json();
+
+      setActivePokemon(pokemon);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const fetchPokemonDetails = async (res) => {
     res.map(async (item) => {
-      const result = await axios.get(item.url);
+      const unparsedResult = await fetch(item.url);
+      const result = await unparsedResult.json();
 
       setPokeInfo((state) => {
-        state = { ...state, [result.data.id]: result.data };
+        state = { ...state, [result.id]: result };
         return state;
       });
     });
@@ -75,18 +86,20 @@ const App = () => {
                   setSearchTerm={setSearchTerm}
                 />
                 <ul>
-                  {filteredPokemonList.map((pokemon) => (
-                    <li key={pokemon.id} className="pokemon__item">
-                      <a
-                        onClick={() => {
-                          getPokemonDetails(pokemon.url);
-                          navigate("/pokemon");
-                        }}
-                      >
-                        {pokemon.name}
-                      </a>
-                    </li>
-                  ))}
+                  {filteredPokemonList.map((pokemon) => {
+                    return (
+                      <li key={pokemon.url} className="pokemon__item">
+                        <a
+                          onClick={() => {
+                            getPokemonDetails(pokemon.url);
+                            navigate("/pokemon");
+                          }}
+                        >
+                          {pokemon.name}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </>
             }
@@ -122,6 +135,12 @@ const App = () => {
 };
 
 function PokemonCards({ pokeData, loading, setActivePokemon, activePokemon }) {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!activePokemon) {
+      navigate("/");
+    }
+  }, [activePokemon]);
   return (
     <div className="content">
       <div className="left__content">

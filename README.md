@@ -1,6 +1,6 @@
 # project-pokedex-frontend
 
-A simple and interactive Pokédex application built using React that lets users browse and view details of Pokémon using data from the PokéAPI. The app is deployed on GitHub Pages and is accessible online.
+A simple and interactive Pokédex application built using React that lets users browse and view details of Pokémon using data from the PokéAPI. The app is deployed on GitHub Pages and is accessible online. When pressing the icons, it will lead you to pages. The logo will lead you back to the main page and Pokéball will lead you to the about me page.
 
 Technologies Used
 React: Frontend library used for building the user interface.
