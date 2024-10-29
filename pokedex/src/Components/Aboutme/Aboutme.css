@@ -2,10 +2,10 @@
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
-  font-family: "Roboto, sans-serif";
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.pokeball {
+.header__ball {
   width: 150px;
 }
 
@@ -18,42 +18,42 @@
   margin-bottom: 10px;
 }
 
-.favorite-pokemon {
+.favorite__pokemon {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.about-favorite {
+.about__favorite {
   color: darkblue;
 }
 
-.pokemon-list {
+.pokemon__list {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
 }
 
-.pokemon-card {
+.pokemon__card {
   text-align: center;
 }
 
-.pokemon-card img {
+.pokemon__card img {
   width: 100px;
   height: auto;
 }
 
-.about-technologies {
+.about__technologies {
   color: darkblue;
   margin-bottom: 10px;
 }
 
-.about-facts {
+.about__facts {
   color: darkblue;
   margin-bottom: 10px;
 }
 
-.about-contact {
+.about__contact {
   color: darkblue;
   margin-bottom: 10px;
 }

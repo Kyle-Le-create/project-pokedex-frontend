@@ -1,9 +1,8 @@
 import logo from "../../assets/pokemonlogo.svg";
 import pokeball from "../../assets/pokeball.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 function Header({
   pokemonList,
@@ -29,19 +28,19 @@ function Header({
     <div className="header">
       <header>
         <Link to="/">
-          <img alt="header__logo" className="logo" src={logo} />
+          <img alt="logo" className="header__logo" src={logo} />
         </Link>
         <nav></nav>
         <Link to="/aboutme">
-          <img alt="header__ball" className="pokeball" src={pokeball} />
+          <img alt="pokeball" className="header__ball" src={pokeball} />
         </Link>
         <nav></nav>
       </header>
 
       <main>
-        <div className="search-container">
+        <div className="search__container">
           <input
-            className="search-box"
+            className="search__box"
             type="text"
             placeholder="Search..."
             value={searchTerm}
@@ -50,7 +49,7 @@ function Header({
         </div>
 
         {selectedPokemon && (
-          <div className="pokemon-details">
+          <div className="pokemon__details">
             <h2>{selectedPokemon.name}</h2>
             <img
               src={selectedPokemon.sprites.front_default}

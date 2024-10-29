@@ -1,17 +1,17 @@
-import React, { act } from "react";
+import React from "react";
 import Header from "../Header/Header";
 import Pokesprites from "../Pokesprites/Pokesprites";
 import Pokeinfo from "../Pokeinfo/Pokeinfo";
 import Aboutme from "../Aboutme/Aboutme";
 import axios from "axios";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../App/App.css";
 import "../style.css";
 import Footer from "../Footer/Footer";
 import { Routes, Route } from "react-router-dom";
 import pokemonData from "../pokemonapi.json";
 import { useNavigate } from "react-router-dom";
+// import { getPokemonById } from "../../utils/api";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -76,7 +76,7 @@ const App = () => {
                 />
                 <ul>
                   {filteredPokemonList.map((pokemon) => (
-                    <li key={pokemon.id} className="pokemon-item">
+                    <li key={pokemon.id} className="pokemon__item">
                       <a
                         onClick={() => {
                           getPokemonDetails(pokemon.url);

@@ -7,7 +7,7 @@ const Aboutme = () => {
   return (
     <div className="about-me">
       <Link to="/">
-        <img alt="header__ball" className="pokeball" src={pokeball} />
+        <img alt="pokeball" className="header__ball" src={pokeball} />
       </Link>
       <nav></nav>
       <h1 className="main">About Me</h1>
@@ -23,24 +23,24 @@ const Aboutme = () => {
       </section>
 
       {/* Favorite Pokémon Section */}
-      <section className="favorite-pokemon">
-        <h2 className="about-favorite">My Favorite Pokémon</h2>
-        <div className="pokemon-list">
-          <div className="pokemon-card">
+      <section className="favorite__pokemon">
+        <h2 className="about__favorite">My Favorite Pokémon</h2>
+        <div className="pokemon__list">
+          <div className="pokemon__card">
             <img
               src="https://img.pokemondb.net/artwork/large/pikachu.jpg"
               alt="Pikachu"
             />
             <p>Pikachu</p>
           </div>
-          <div className="pokemon-card">
+          <div className="pokemon__card">
             <img
               src="https://img.pokemondb.net/artwork/large/charizard.jpg"
               alt="Charizard"
             />
             <p>Charizard</p>
           </div>
-          <div className="pokemon-card">
+          <div className="pokemon__card">
             <img
               src="https://img.pokemondb.net/artwork/large/bulbasaur.jpg"
               alt="Bulbasaur"
@@ -52,7 +52,7 @@ const Aboutme = () => {
 
       {/* Skills Section */}
       <section className="skills">
-        <h2 className="about-technologies">Technologies Used</h2>
+        <h2 className="about__technologies">Technologies Used</h2>
         <ul>
           <li>React</li>
           <li>JavaScript (ES6+)</li>
@@ -62,8 +62,8 @@ const Aboutme = () => {
       </section>
 
       {/* Fun Facts Section */}
-      <section className="fun-facts">
-        <h2 className="about-facts">Fun Facts</h2>
+      <section className="fun__facts">
+        <h2 className="about__facts">Fun Facts</h2>
         <ul>
           <li>The first Pokémon I played with was a Bulbasaur!</li>
           <li>
@@ -75,7 +75,7 @@ const Aboutme = () => {
 
       {/* Contact Section */}
       <section className="contact">
-        <h2 className="about-contact">Contact Me</h2>
+        <h2 className="about__contact">Contact Me</h2>
         <p>Find me on:</p>
         <ul>
           <li>
