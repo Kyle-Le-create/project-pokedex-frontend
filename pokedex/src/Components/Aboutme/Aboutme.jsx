@@ -7,7 +7,7 @@ const Aboutme = () => {
   return (
     <div className="about-me">
       <Link to="/">
-        <img alt="pokeball" className="header__ball" src={pokeball} />
+        <img alt="pokeball" className="header__ball--active" src={pokeball} />
       </Link>
       <nav></nav>
       <h1 className="main">About Me</h1>

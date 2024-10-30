@@ -34,10 +34,16 @@ const App = () => {
 
   const pokeFun = async () => {
     setLoading(true);
-    const res = await fetch(url);
-    const data = await res.json();
-    fetchPokemonDetails(data.results);
-    setLoading(false);
+    try {
+      const res = await fetch(url);
+      if (!res.ok) {
+        throw new Error("Could not get data");
+      }
+      const data = await res.json();
+      fetchPokemonDetails(data.results);
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   async function getPokemonDetails(url) {

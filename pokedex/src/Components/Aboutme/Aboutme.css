@@ -5,7 +5,7 @@
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.header__ball {
+.header__ball--active {
   width: 150px;
 }
 

@@ -9,6 +9,10 @@ header {
   width: 500px;
 }
 
+.header__ball {
+  width: 150px;
+}
+
 .search__container {
   display: flex;
   justify-content: center;
