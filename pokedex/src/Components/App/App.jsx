@@ -42,33 +42,54 @@ const App = () => {
       const data = await res.json();
       fetchPokemonDetails(data.results);
     } catch (error) {
+      console.error("Fetch error:", error);
+    } finally {
       setLoading(false);
     }
   };
 
+  function checkResponse(res) {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  }
+
+  function request(url, options) {
+    return fetch(url, options).then(checkResponse);
+  }
+
   async function getPokemonDetails(url) {
     try {
-      const res = await fetch(url);
-      if (!res.ok) {
-        throw new Error("Could not get pokemon");
-      }
-      const pokemon = await res.json();
-
+      const pokemon = await request(url);
       setActivePokemon(pokemon);
     } catch (error) {
       console.error(error);
     }
   }
 
-  const fetchPokemonDetails = async (res) => {
-    res.map(async (item) => {
-      const unparsedResult = await fetch(item.url);
-      const result = await unparsedResult.json();
+  function checkResponse(res) {
+    if (!res.ok) {
+      return Promise.reject(`Error: ${res.status}`);
+    }
+    return res.json();
+  }
 
-      setPokeInfo((state) => {
-        state = { ...state, [result.id]: result };
-        return state;
+  const fetchPokemonDetails = async (res) => {
+    const results = await Promise.all(
+      res.map(async (item) => {
+        const unparsedResult = await fetch(item.url);
+        const result = await checkResponse(unparsedResult);
+        return result;
+      })
+    );
+
+    setPokeInfo((state) => {
+      const newState = { ...state };
+      results.forEach((result) => {
+        newState[result.id] = result;
       });
+      return newState;
     });
   };
 
