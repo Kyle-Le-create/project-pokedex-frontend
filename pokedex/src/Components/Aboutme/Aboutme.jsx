@@ -7,13 +7,13 @@ const Aboutme = () => {
   return (
     <div className="about-me">
       <Link to="/">
-        <img alt="pokeball" className="header__ball--active" src={pokeball} />
+        <img alt="pokeball" className="about-me__ball" src={pokeball} />
       </Link>
       <nav></nav>
-      <h1 className="main">About Me</h1>
+      <h1 className="about-me__title">About Me</h1>
 
       {/* Introduction Section */}
-      <section className="introduction">
+      <section className="about-me__introduction">
         <p>
           Hi! I'm Kyle, a budding developer with a passion for Pokémon and web
           development. I created this Pokédex app to combine my love for coding

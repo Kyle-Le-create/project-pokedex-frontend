@@ -32,14 +32,21 @@ const App = () => {
 
   const navigate = useNavigate();
 
+  function request(url, options = {}) {
+    return fetch(url, options).then(checkResponse);
+  }
+  // async function request(url) {
+  //   const res = await fetch(url);
+  //   if (!res.ok) {
+  //     throw new Error(`Error: ${res.status}`);
+  //   }
+  //   return res.json();
+  // }
+
   const pokeFun = async () => {
     setLoading(true);
     try {
-      const res = await fetch(url);
-      if (!res.ok) {
-        throw new Error("Could not get data");
-      }
-      const data = await res.json();
+      const data = await request(url);
       fetchPokemonDetails(data.results);
     } catch (error) {
       console.error("Fetch error:", error);
@@ -55,10 +62,6 @@ const App = () => {
     return res.json();
   }
 
-  function request(url, options) {
-    return fetch(url, options).then(checkResponse);
-  }
-
   async function getPokemonDetails(url) {
     try {
       const pokemon = await request(url);
@@ -68,18 +71,10 @@ const App = () => {
     }
   }
 
-  function checkResponse(res) {
-    if (!res.ok) {
-      return Promise.reject(`Error: ${res.status}`);
-    }
-    return res.json();
-  }
-
   const fetchPokemonDetails = async (res) => {
     const results = await Promise.all(
       res.map(async (item) => {
-        const unparsedResult = await fetch(item.url);
-        const result = await checkResponse(unparsedResult);
+        const result = await request(item.url);
         return result;
       })
     );

@@ -5,15 +5,15 @@
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.header__ball--active {
+.about-me__ball {
   width: 150px;
 }
 
-.main {
+.about-me__title {
   color: darkblue;
 }
 
-.introduction p {
+.about-me__introduction p {
   font-size: 1.1em;
   margin-bottom: 10px;
 }
