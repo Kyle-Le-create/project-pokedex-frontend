@@ -1,0 +1,42 @@
+.container {
+  max-width: 1440px;
+  margin: auto;
+  padding-top: 100px;
+}
+
+.content {
+  display: flex;
+}
+
+.left__content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+  gap: 2rem;
+  width: 1000px;
+}
+
+.right__content {
+  width: 35%;
+  text-align: center;
+  color: black;
+  position: fixed;
+  top: 100px;
+  right: 10px;
+}
+
+.btn__group {
+  display: flex;
+}
+
+.btn__group button {
+  outline: none;
+  border: none;
+  width: 150px;
+  padding: 0.3rem 0;
+  margin: 1rem;
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+  background-color: #b74555;
+  border-radius: 8px;
+}
