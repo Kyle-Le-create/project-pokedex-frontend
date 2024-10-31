@@ -28,32 +28,32 @@
   color: darkblue;
 }
 
-.pokemon__list {
+.about-me__list {
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
 }
 
-.pokemon__card {
+.about-me__card {
   text-align: center;
 }
 
-.pokemon__card img {
+.about-me__card img {
   width: 100px;
   height: auto;
 }
 
-.about__technologies {
+.about-me__technologies {
   color: darkblue;
   margin-bottom: 10px;
 }
 
-.about__facts {
+.about-me__facts {
   color: darkblue;
   margin-bottom: 10px;
 }
 
-.about__contact {
+.about-me__contact {
   color: darkblue;
   margin-bottom: 10px;
 }
