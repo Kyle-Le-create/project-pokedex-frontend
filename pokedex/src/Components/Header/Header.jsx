@@ -3,7 +3,7 @@ import pokeball from "../../assets/pokeball.png";
 import { Link, useNavigate } from "react-router-dom";
 import "./Header.css";
 import React, { useState } from "react";
-import { getPokemonFetch } from "../../utils/api";
+// import { getPokemonFetch } from "../../utils/api";
 
 function Header({
   pokemonList,
@@ -33,9 +33,9 @@ function Header({
       </header>
 
       <main>
-        <div className="search__container">
+        <div className="header__container">
           <input
-            className="search__box"
+            className="header__search"
             type="text"
             placeholder="Search..."
             value={searchTerm}

@@ -23,8 +23,8 @@ const Aboutme = () => {
       </section>
 
       {/* Favorite Pokémon Section */}
-      <section className="favorite__pokemon">
-        <h2 className="about__favorite">My Favorite Pokémon</h2>
+      <section className="about-me__pokemon">
+        <h2 className="about-me__favorite">My Favorite Pokémon</h2>
         <div className="pokemon__list">
           <div className="pokemon__card">
             <img

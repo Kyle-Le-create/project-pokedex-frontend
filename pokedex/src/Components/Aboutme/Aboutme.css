@@ -18,13 +18,13 @@
   margin-bottom: 10px;
 }
 
-.favorite__pokemon {
+.about-me__pokemon {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.about__favorite {
+.about-me__favorite {
   color: darkblue;
 }
 

@@ -13,7 +13,7 @@ header {
   width: 150px;
 }
 
-.search__container {
+.header__container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,7 +21,7 @@ header {
   gap: 10px;
 }
 
-.search__box {
+.header__search {
   width: 30%;
   height: 50px;
   font-size: 1.5em;
